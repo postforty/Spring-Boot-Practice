@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.UserRequest;
+
 @RestController
 @RequestMapping("/api/get")
 public class GetApiController {
@@ -65,4 +67,17 @@ public class GetApiController {
 		
 		return name+" "+email+" "+age;
 	}
+	
+	// DTO 실무에서 주로 사용하는 방식
+	@GetMapping(path="query-param03")
+	public String queryParam03(UserRequest userRequest) {
+		
+		System.out.println(userRequest.getName());
+		System.out.println(userRequest.getEmail());
+		System.out.println(userRequest.getAge());
+		
+		return userRequest.toString();
+	}
+	
+	
 }
