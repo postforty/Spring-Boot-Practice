@@ -68,7 +68,7 @@ public class GetApiController {
 		return name+" "+email+" "+age;
 	}
 	
-	// DTO 실무에서 주로 사용하는 방식
+	// DTO 객체 정의. 실무에서 주로 사용하는 방식
 	@GetMapping(path="query-param03")
 	public String queryParam03(UserRequest userRequest) {
 		
