@@ -12,6 +12,4 @@ public class ApiController {
 	public String hello() {
 		return "hello spring boot!";
 	}
-	
-	
 }
