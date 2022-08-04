@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class PostRequestDto {
 
 	private String account;
@@ -7,6 +9,20 @@ public class PostRequestDto {
 	private String address;
 	private String password;
 	
+	@JsonProperty("phone_number")
+	private String phoneNumber; // phone_number
+	
+	// getter, setter 없이 접근 가능
+	// 코딩 컨벤션 상관 없음
+	@JsonProperty("OTP")
+	private String OTP;
+	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 	public String getAccount() {
 		return account;
 	}
@@ -31,11 +47,10 @@ public class PostRequestDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 	@Override
 	public String toString() {
 		return "PostRequestDto [account=" + account + ", email=" + email + ", address=" + address + ", password="
-				+ password + "]";
+				+ password + ", phoneNumber=" + phoneNumber + ", OTP=" + OTP + "]";
 	}
 	
 	
