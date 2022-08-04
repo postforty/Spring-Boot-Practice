@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +12,10 @@ import com.example.demo.dto.PutRequestDto;
 @RequestMapping("/api")
 public class PutApiController {
 	
-	@PutMapping("/put")
-	public PutRequestDto put(@RequestBody PutRequestDto requestDto) {
+	@PutMapping("/put/{userId}")
+	public PutRequestDto put(@RequestBody PutRequestDto requestDto, @PathVariable(name="userId") Long id) {
 		
-		System.out.println(requestDto);
+		System.out.println(id);
 		return requestDto;
 		
 	}
