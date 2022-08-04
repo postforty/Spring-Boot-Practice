@@ -2,7 +2,7 @@
 
 > 교육기관 : fast campus
 
-[주요 내용]
+> 주요 내용
 + REST API
 + URI 설계 패턴
 + HTTP Protocol
