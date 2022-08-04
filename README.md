@@ -7,6 +7,19 @@
   * URI 설계 패턴
   * HTTP Protocol
   * GET, POST, PUT, DELETE API
+   * @RestController
+   * @RequestMapping
+   * @GetMapping
+   * @PostMapping
+   * @PutMapping
+   * @DeleteMapping
+   * @RequestParam
+   * @RequestBody
+   * @JsonProperty
+   * @JsonNaming
+   * pathVariable
+   * queryParam
+   * Map
   * Response 내려주기
   * Object Mapper
   * Server to Server 통신
