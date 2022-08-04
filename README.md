@@ -1,6 +1,6 @@
 # fast campus - Java & SpringBoot로 시작하는 웹 프로그래밍
 
-## 주요 학습 내용
+[주요 내용]
 + REST API
 + URI 설계 패턴
 + HTTP Protocol
