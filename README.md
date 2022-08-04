@@ -1,4 +1,4 @@
-## Java & SpringBoot로 시작하는 웹 프로그래밍 학습
+## Java & SpringBoot로 시작하는 웹 프로그래밍 *학습
 
 * 교육기관 : fast campus
 
