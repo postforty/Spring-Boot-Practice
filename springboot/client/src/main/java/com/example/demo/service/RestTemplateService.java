@@ -36,7 +36,7 @@ public class RestTemplateService {
 		
 	}
 	
-	public UserResponse post() {
+	public void post() {
 		// http://localhost:9090/api/server/user/{userId}/{userName}
 		
 		URI uri = UriComponentsBuilder
@@ -54,13 +54,13 @@ public class RestTemplateService {
 		req.setAge(40);
 		
 		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<UserResponse> response = restTemplate.postForEntity(uri, req, UserResponse.class);
+		ResponseEntity<String> response = restTemplate.postForEntity(uri, req, String.class);
 		
 		System.out.println(response.getStatusCode());
 		System.out.println(response.getHeaders());
 		System.out.println(response.getBody());
 		
-		return response.getBody();
+//		return response.getBody();
 		
 	}
 
