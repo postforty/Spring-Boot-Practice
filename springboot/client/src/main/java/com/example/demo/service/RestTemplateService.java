@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.net.URI;
 
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.example.demo.dto.Req;
 import com.example.demo.dto.UserRequest;
 import com.example.demo.dto.UserResponse;
 
@@ -92,5 +94,45 @@ public class RestTemplateService {
 		ResponseEntity<UserResponse> response = restTemplate.exchange(requestEntity, UserResponse.class);
 		return response.getBody();
 	}
+	
+	public Req<UserResponse> genericExchange() {
+		URI uri = UriComponentsBuilder
+				.fromUriString("http://localhost:9090")
+				.path("/api/server/user/{userId}/name/{userName}")
+				.encode()
+				.build()
+				.expand("100", "steve")
+				.toUri();
+		System.out.println(uri);
+		
+		// http body -> object -> object mapper -> json -> rest template -> http body json
+		
+		UserRequest userRequset = new UserRequest();
+		userRequset.setName("steve");
+		userRequset.setAge(40);
+		
+		Req<UserRequest> req = new Req<>();
+		req.setHeader(
+				new Req.Header()
+		);
+		
+		req.setResBody(
+				userRequset
+		);
+		
+		RequestEntity<Req<UserRequest>> requestEntity = RequestEntity
+				.post(uri)
+				.contentType(MediaType.APPLICATION_JSON)
+				.header("x-authorization", "abcd")
+				.header("custom-header", "fffff")
+				.body(req);
+		
+		RestTemplate restTemplate = new RestTemplate();
+		
+		ResponseEntity<Req<UserResponse>> response = restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Req<UserResponse>>() {});
+		
+		return response.getBody();
+	}
+	
 
 }
