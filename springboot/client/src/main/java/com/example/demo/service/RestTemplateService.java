@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.example.demo.dto.UserRequest;
 import com.example.demo.dto.UserResponse;
 
 @Service
@@ -32,6 +33,34 @@ public class RestTemplateService {
 		System.out.println(result.getBody());
 		
 		return result.getBody();
+		
+	}
+	
+	public UserResponse post() {
+		// http://localhost:9090/api/server/user/{userId}/{userName}
+		
+		URI uri = UriComponentsBuilder
+				.fromUriString("http://localhost:9090")
+				.path("/api/server/user/{userId}/name/{userName}")
+				.encode()
+				.build()
+				.expand("100", "steve")
+				.toUri();
+		System.out.println(uri);
+		
+		// http body -> object -> object mapper -> json -> rest template -> http body json
+		UserRequest req = new UserRequest();
+		req.setName("steve");
+		req.setAge(40);
+		
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<UserResponse> response = restTemplate.postForEntity(uri, req, UserResponse.class);
+		
+		System.out.println(response.getStatusCode());
+		System.out.println(response.getHeaders());
+		System.out.println(response.getBody());
+		
+		return response.getBody();
 		
 	}
 

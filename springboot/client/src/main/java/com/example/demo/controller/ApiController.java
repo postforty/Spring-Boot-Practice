@@ -15,8 +15,15 @@ public class ApiController {
 	@Autowired
 	private RestTemplateService restTemplateService;
 
+//	@GetMapping("/hello")
+//	public UserResponse getHello() {
+//		return restTemplateService.hello();
+//	}
+	
 	@GetMapping("/hello")
 	public UserResponse getHello() {
-		return restTemplateService.hello();
+		return restTemplateService.post();
 	}
+	
+	
 }
