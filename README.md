@@ -1,6 +1,6 @@
 ## Java & SpringBoot로 시작하는 웹 프로그래밍 실습
 
-* 교육기관 : fast campus
+* 교육기관 : Fast Campus
 
 * 주요 내용
   * REST API
